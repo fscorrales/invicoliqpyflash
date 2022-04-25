@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>nombre_completo</th>
+        <th>actividad</th>
+        <th>partdida</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for facturero in factureros %}
+        <tr>
+          <td>{{ facturero.id }}</td>
+          <td>{{ facturero.nombre_completo }}</td>
+          <td>{{ facturero.actividad }}</td>
+          <td>{{ facturero.partida }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        // columns: [
+        //   null,
+        //   {searchable: false},
+        //   {orderable: false, searchable: false},
+        //   {orderable: false, searchable: false},
+        //   null],
+      });
+    });
+  </script>
+{% endblock %}

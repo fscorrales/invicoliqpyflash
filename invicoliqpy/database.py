@@ -1,12 +1,6 @@
-from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-DATABASE = 'primary_key.sqlite'
-
-app = Flask(__name__)
-#http://localhost:5000/
-@app.route('/')
-def inicio():
-    return 'Hola Mundo desde Flask'
+db = SQLAlchemy()
 
 #https://flask.palletsprojects.com/en/2.1.x/patterns/sqlite3/
 # from flask import g

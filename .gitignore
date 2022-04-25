@@ -31,7 +31,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 invicoliqpy_env
-invicoliqpy/primary_key.sqlite
+invicoliqpy/slave_test.sqlite
+invicoliqpy/flaskui.py
+invicoliqpy/van.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
