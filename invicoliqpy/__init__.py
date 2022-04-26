@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flaskwebgui import FlaskUI
+#from flaskwebgui import FlaskUI
 import sys
 import os
 
@@ -10,19 +10,19 @@ import os
 #If using test enviroment
 #TEST_ENV = False
 
-if getattr(sys, 'frozen', False):
+""" if getattr(sys, 'frozen', False):
     template_folder = os.path.join(sys._MEIPASS, 'templates')
     static_folder = os.path.join(sys._MEIPASS, 'static')
     app = Flask(__name__, template_folder = template_folder, 
                 static_folder = static_folder)
 else:
-    app = Flask(__name__)
+    app = Flask(__name__) """
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 # if TEST_ENV == False:
-ui = FlaskUI(app)
+#   ui = FlaskUI(app)
 
 DATABASE = 'slave_test.sqlite'
 

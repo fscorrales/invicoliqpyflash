@@ -6,5 +6,5 @@ from invicoliqpy.models import Factureros
 #http://localhost:5000/
 @app.route('/')
 def inicio():
-    #factureros = Factureros.query
-    return render_template('prueba.html', total = 10)
+    factureros = Factureros.query
+    return render_template('tabla_factureros.html', factureros = factureros)
