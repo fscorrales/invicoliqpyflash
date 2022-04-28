@@ -38,3 +38,4 @@ migrate = Migrate()
 migrate.init_app(app, db)
 
 from invicoliqpy import routes
+from invicoliqpy import fake_db
