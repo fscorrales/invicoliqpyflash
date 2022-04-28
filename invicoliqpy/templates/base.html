@@ -14,14 +14,22 @@
     <!-- DataTables -->
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"> -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.css">    
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 <body>
-    {% include 'navbar.html' %}
-    <div class=”container”>
-        {% block content %}
+    
+    <div class="container">
+        <div class="row">
+            {% include 'navbar.html' %}
+        </div>
+        <div class="row">
+            {% block content %}
 
-        {% endblock %}
+            {% endblock %}
+        </div>
     </div>
 
     <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
