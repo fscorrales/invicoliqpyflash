@@ -8,6 +8,8 @@
         <th>nombre_completo</th>
         <th>actividad</th>
         <th>partida</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +19,8 @@
           <td>{{ facturero.nombre_completo }}</td>
           <td>{{ facturero.actividad }}</td>
           <td>{{ facturero.partida }}</td>
+          <td><a href="editar/{{facturero.id}}">Editar</a></td>
+          <td><a href="delete/{{facturero.id}}">Eliminar</a></td>
         </tr>
         {% endfor %}
     </tbody>

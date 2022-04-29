@@ -6,7 +6,6 @@ import sys
 import os
 
 #from database import db
-
 #If using test enviroment
 #TEST_ENV = False
 
@@ -29,6 +28,7 @@ DATABASE = 'slave_test.sqlite'
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or \
     'sqlite:///' + os.path.join(basedir, DATABASE)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY']='llave_secreta'
 #Inicializacion del objeto db de sqlalchemy
 db = SQLAlchemy(app)
 #db.init_app(app)
