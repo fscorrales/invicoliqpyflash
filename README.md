@@ -14,10 +14,13 @@ Para esto recurriremos al módulo flask-migrate. Las etapas del proceso son las 
  - **Realizar la migración inicial:** Seguidamente, introducir el comando *flask db migrate -m “Initial migration”*
  - **Ejecutar migración:** Por último, introducimos el comando *flask db upgrade*
 
-Si al momento de inciar el proceso aparece el error “Could not locate a Flask application. You did not provide the "FLASK_APP" environment variable, and a "wsgi.py" or "app.py" module was not found in the current directory.” se debe colocar lo siguiente: *$env:FLASK_APP = "run.py"*
+Si al momento de inciar el proceso aparece el error “Could not locate a Flask application. You did not provide the "FLASK_APP" environment variable, and a "wsgi.py" or "app.py" module was not found in the current directory.” se debe probar alguno de los siguientes comandos: 
+ - *$env:FLASK_APP = "run.py"*
+ - *set FLASK_APP=run.py* (Windows) o *export FLASK_APP=run.py* (Linux y Mac)
 
  # Introducir registros
 Para generar registros falsos en la base de datos se puede utilizar el módulo fake_db que forma parte de este paquete. Para ello deberá importar el paquete completo en una consola python y llamar a las funciones que forman parte del mencionado módulo identificando la cantidad de registros a agregar.
 
-
+ # Ejecutar flask en modo debug
+ Simplemente hay que introducir el comando *python run.py* estando posicionados dentro de la raíz del paquete invicoliqpy
  

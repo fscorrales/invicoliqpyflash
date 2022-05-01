@@ -7,6 +7,10 @@ from invicoliqpy.forms import FacturerosForm
 #http://localhost:5000/
 @app.route('/')
 def inicio():
+    return render_template('home.html')
+
+@app.route('/agentes')
+def factureros():
     factureros = Factureros.query
     return render_template('table_factureros.html', factureros = factureros)
 
@@ -24,8 +28,8 @@ def agregar():
            return redirect(url_for('inicio'))
     return render_template('agregar.html', forma = factureroForm) """
 
-@app.route('/editar/<int:id>', methods=['GET','POST'])
-def editar(id):
+@app.route('/agentes/editar/<int:id>', methods=['GET','POST'])
+def facturero_editar(id):
     #Recuperamos el objeto persona a editar
     facturero = Factureros.query.get_or_404(id)
     factureroForm = FacturerosForm(obj=facturero)
@@ -39,8 +43,8 @@ def editar(id):
     titulo = 'Editar',
     form = factureroForm)
 
-@app.route('/delete/<int:id>')
-def delete(id):
+@app.route('/agentes/borrar/<int:id>')
+def facturero_borrar(id):
     facturero = Factureros.query.get_or_404(id)
     try:
         db.session.delete(facturero)

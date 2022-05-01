@@ -1,0 +1,19 @@
+<h1>{{ titulo }} Persona</h1>
+<form method="POST">
+    {{form.csrf_token}}
+    <p>
+        {{form.nombre_completo.label}} <br/>
+        {{form.nombre_completo(size=30)}}
+    </p>
+    <p>
+        {{form.actividad.label}} <br/>
+        {{form.actividad(size=8)}}
+    </p>
+    <p>
+        {{form.partida.label}} <br/>
+        {{form.partida(size=3)}}
+    </p>
+    <p>
+        {{form.enviar()}}
+    </p>
+</form>

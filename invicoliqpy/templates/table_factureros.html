@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <table id="data" class="table table-striped table-hover table-bordered border-success">
+<div class="container page-content">
+
+  <table id="table-factureros" class="table table-striped table-hover table-bordered border-success">
     <thead class="table-success">
       <tr>
         <th>id</th>
@@ -19,25 +21,89 @@
           <td>{{ facturero.nombre_completo }}</td>
           <td>{{ facturero.actividad }}</td>
           <td>{{ facturero.partida }}</td>
-          <td><a href="editar/{{facturero.id}}">Editar</a></td>
-          <td><a href="delete/{{facturero.id}}">Eliminar</a></td>
+          <td><a href="{{ url_for('facturero_editar', id = facturero.id) }}">Editar</a></td>
+          <td><a href="{{ url_for('facturero_borrar', id = facturero.id) }}">Eliminar</a></td>
         </tr>
         {% endfor %}
     </tbody>
   </table>
+
+</div>
+
 {% endblock %}
 
 {% block scripts %}
   <script>
-    $(document).ready(function () {
-      $('#data').DataTable({
-        // columns: [
-        //   null,
-        //   {searchable: false},
-        //   {orderable: false, searchable: false},
-        //   {orderable: false, searchable: false},
-        //   null],
-      });
-    });
+    $(document).ready(function() {
+        $('#table-factureros').DataTable( {
+            dom: 'Blrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        } );
+    } );
+    // Código para filtro por columnas
+/*     $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#table-factureros thead tr')
+            .clone(true)
+            .addClass('filters')
+            .appendTo('#table-factureros thead');
+    
+        var table = $('#table-factureros').DataTable({
+            orderCellsTop: true,
+            fixedHeader: true,
+            initComplete: function () {
+                var api = this.api();
+    
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        $(cell).html('<input type="text" placeholder="' + title + '" />');
+    
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('keyup change', function (e) {
+                                e.stopPropagation();
+    
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+    
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+    
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+        });
+    }); */
   </script>
 {% endblock %}
