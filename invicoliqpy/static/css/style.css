@@ -16,3 +16,20 @@
 .page-content{
     margin-top: 75px;
 }
+
+div.dt-buttons{
+  float: right;
+  background-color:aqua;
+}
+
+a i.delete-person{
+  color: red;
+}
+
+a i.modify-person{
+  color: yellow;
+}
+
+i.add-person{
+  color: green;
+}
