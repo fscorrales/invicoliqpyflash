@@ -9,10 +9,18 @@ from invicoliqpy.forms import FacturerosForm
 def inicio():
     return render_template('home.html')
 
-@app.route('/agentes')
+@app.route('/factureros')
 def factureros():
-    factureros = Factureros.query
-    return render_template('table_factureros.html', factureros = factureros)
+    return render_template('table_factureros.html')
+
+# @app.route('/agentes')
+# def factureros():
+#     factureros = Factureros.query
+#     return render_template('table_factureros_basic.html', factureros = factureros)
+
+@app.route('/api/factureros')
+def api_factureros():
+    return {'data': [facturero.to_dict() for facturero in Factureros.query]}
 
 """ @app.route('/agregar', methods=['GET','POST'])
 def agregar():
@@ -28,7 +36,7 @@ def agregar():
            return redirect(url_for('inicio'))
     return render_template('agregar.html', forma = factureroForm) """
 
-@app.route('/agentes/editar/<int:id>', methods=['GET','POST'])
+@app.route('/facturero/editar/<int:id>', methods=['GET','POST'])
 def facturero_editar(id):
     #Recuperamos el objeto persona a editar
     facturero = Factureros.query.get_or_404(id)
@@ -43,7 +51,7 @@ def facturero_editar(id):
     titulo = 'Editar',
     form = factureroForm)
 
-@app.route('/agentes/borrar/<int:id>')
+@app.route('/facturero/borrar/<int:id>')
 def facturero_borrar(id):
     facturero = Factureros.query.get_or_404(id)
     try:

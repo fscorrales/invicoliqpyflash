@@ -8,6 +8,14 @@ class Factureros(db.Model):
     actividad = db.Column(db.String(8))
     partida = db.Column(db.String(3))
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'nombre_completo': self.nombre_completo,
+            'actividad': self.actividad,
+            'partida': self.partida,
+        }
+
     def __str__(self):
         return (
             f'ID: {self.id},'

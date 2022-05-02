@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-        <!-- {% for facturero in factureros %}
+        {% for facturero in factureros %}
         <tr>
           <td>{{ facturero.id }}</td>
           <td>{{ facturero.nombre_completo }}</td>
@@ -24,7 +24,7 @@
           <td><a href="{{ url_for('facturero_editar', id = facturero.id) }}">Editar</a></td>
           <td><a href="{{ url_for('facturero_borrar', id = facturero.id) }}">Eliminar</a></td>
         </tr>
-        {% endfor %} -->
+        {% endfor %}
     </tbody>
   </table>
 
@@ -36,21 +36,6 @@
   <script>
     $(document).ready(function() {
         $('#table-factureros').DataTable( {
-            ajax: '/api/factureros',
-            columns: [
-                {data: 'id'},
-                {data: 'nombre_completo'},
-                {data: 'actividad'},
-                {data: 'partida'},
-                {data: 'id', render: function (data, type, full, meta) {
-                            return '<a href=/facturero/editar/'+ parseInt(data) +'>Editar</a>';
-                            }
-                },
-                {data: 'id', render: function (data, type, full, meta) {
-                            return '<a href=/facturero/borrar/'+ parseInt(data) +'>Borrar</a>';
-                            }
-                },
-            ],
             dom: 'Blrtip',
             buttons: [{
                 extend: 'collection',
