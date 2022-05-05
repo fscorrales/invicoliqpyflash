@@ -52,16 +52,22 @@
                 {data: 'nombre_completo'},
                 {data: 'actividad'},
                 {data: 'partida'},
-                {data: 'id', orderable: false,  className: 'dt-body-center', 
+                {data: 'id', orderable: false,  className: 'dt-body-center text-center', 
                 render: function (data, type, full, meta) {
                             return '<a class="modify-person" href=/facturero/editar/'+ parseInt(data) +
                             '><i class="material-icons">edit</i></a>';
                             }
                 },
-                {data: 'id', orderable: false,  className: 'dt-body-center',
+                {data: 'id', orderable: false,  className: 'dt-body-center text-center',
                 render: function (data, type, full, meta) {
-                            return '<a class="delete-person" href=/facturero/borrar/'+ parseInt(data) +
-                            '><i class="material-icons">person_remove</i></a>';
+                            return '<form class="delete-person" action=/facturero/borrar/'+ parseInt(data) + '>' +
+                            '<button class="noselect">' +
+                                '<span class="text">Borrar</span>'+
+                                '<span class="icon">'+
+                                    '<i class="material-icons">delete</i>'+
+                                '</span>'+
+                            '</button>' +
+                            '</form>';
                             }
                 },
             ],
