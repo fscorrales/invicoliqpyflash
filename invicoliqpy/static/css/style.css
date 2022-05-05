@@ -19,17 +19,37 @@
 
 div.dt-buttons{
   float: right;
-  background-color:aqua;
 }
 
-a i.delete-person{
-  color: red;
+div.dt-buttons .btn.top { 
+  width: 60px;
+  margin-right: 25px 
 }
 
-a i.modify-person{
-  color: yellow;
+a.modify-person:link,
+a.delete-person:link{
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
 }
 
-i.add-person{
+a.modify-person:link{
+  background-color: yellow;
+}
+
+a.modify-person i.material-icons{
+  vertical-align:bottom;
+}
+
+a.delete-person:link{
+  background-color: red;
+}
+
+a.delete-person i.material-icons{
+  vertical-align:bottom;
+}
+
+/* i.add-person{
   color: green;
-}
+} */
