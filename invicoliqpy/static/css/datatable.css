@@ -71,3 +71,13 @@ td.dt-col-button button.btn-small:hover:after {
 i.material-icons{
     vertical-align: center;
 }
+
+div.dt-buttons{
+    float: right;
+}
+
+div.dt-buttons .btn.top { 
+    width: 60px;
+    margin-right: 0px;
+    background-color: var(--primary);
+}

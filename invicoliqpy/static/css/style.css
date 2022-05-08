@@ -18,6 +18,10 @@ body, html{
   height: 100%;
 }
 
+.navbar-content nav{
+  background-color: var(--high_success);
+}
+
 .base-content{
   height: 100%;
   min-height: 100%;
@@ -41,26 +45,9 @@ body, html{
   bottom: 0;
 }
 
-#gradient {
-  /* background-image: linear-gradient(90deg, rgba(5,197,241,0.80) 0%, rgba(115,204,48,0.80) 100%), url(../../../Content/imagenes/Imagen 2@2x.png); */
-  /* background-size: cover; */
-  /* background-position: bottom; */
-}
-
 .page-content{
     margin-top: 75px;
 }
-
-div.dt-buttons{
-  float: right;
-}
-
-div.dt-buttons .btn.top { 
-  width: 60px;
-  margin-right: 0px 
-}
-
-
 
 /* a.modify-person:link,
 a.delete-person:link{
