@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container page-content">
 
-  <table id="table-factureros" class="table table-striped table-hover table-bordered border-success align-middle">
-    <thead class="table-success">
+  <table id="table-factureros" class="table table-hover table-bordered border-success align-middle">
+    <thead class="">
       <tr>
         <th>nombre_completo</th>
         <th>actividad</th>
@@ -52,21 +52,21 @@
                 {data: 'nombre_completo'},
                 {data: 'actividad'},
                 {data: 'partida'},
-                {data: 'id', orderable: false,  className: 'dt-body-center text-center', 
+                {data: 'id', orderable: false,  className: 'dt-col-button', 
                 render: function (data, type, full, meta) {
-                            return '<a class="modify-person" href=/facturero/editar/'+ parseInt(data) +
-                            '><i class="material-icons">edit</i></a>';
+                            return '<form href=/facturero/editar/'+ parseInt(data) + '>' +
+                                '<button class="btn-small edit-person">' +
+                                    '<i class="material-icons">edit</i>'+
+                                '</button>' +
+                            '</form>';
                             }
                 },
-                {data: 'id', orderable: false,  className: 'dt-body-center text-center',
+                {data: 'id', orderable: false,  className: 'dt-col-button',
                 render: function (data, type, full, meta) {
-                            return '<form class="delete-person" action=/facturero/borrar/'+ parseInt(data) + '>' +
-                            '<button class="noselect">' +
-                                '<span class="text">Borrar</span>'+
-                                '<span class="icon">'+
+                            return '<form action=/facturero/borrar/'+ parseInt(data) + '>' +
+                                '<button class="btn-small delete-person">' +
                                     '<i class="material-icons">delete</i>'+
-                                '</span>'+
-                            '</button>' +
+                                '</button>' +
                             '</form>';
                             }
                 },

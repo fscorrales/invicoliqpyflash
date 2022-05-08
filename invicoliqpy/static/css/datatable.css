@@ -1,0 +1,73 @@
+:root{
+    --high_success: #7CBA3D;
+    --success: #91D300;
+    --high_primary: #007bff;
+    --primary: #05C5F1;
+    --background: #F2F2F3;
+    --alert: #bc4749;
+    --border_radius: 5px;
+}
+
+table tbody td.dt-col-button{
+    padding: 0;
+    text-align: center;
+}
+
+table thead th{
+    background: var(--high_success)!important;
+    color: white;
+    text-align: center;
+}
+
+/* From uiverse.io by @CristianMontoya98 */
+td.dt-col-button button.btn-small {
+    padding: 5px 5px;
+    width: 40px;
+    display: inline-block;
+    margin: 0;
+    vertical-align: center;
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+td.dt-col-button button.btn-small.delete-person{
+    background: var(--alert);
+}
+
+td.dt-col-button button.btn-small.edit-person{
+    background: var(--primary);
+}
+
+td.dt-col-button button.btn-small:hover {
+    color: white;
+}
+
+td.dt-col-button button.btn-small:after {
+    content: "";
+    background: var(--success);
+    position: absolute;
+    z-index: -1;
+    left: -40%;
+    right: -40%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+
+td.dt-col-button button.btn-small:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+i.material-icons{
+    vertical-align: center;
+}

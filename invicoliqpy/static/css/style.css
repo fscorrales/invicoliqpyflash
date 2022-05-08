@@ -1,3 +1,17 @@
+:root{
+  --high_success: #7CBA3D;
+  --success: #91D300;
+  --high_primary: #007bff;
+  --primary: #05C5F1;
+  --background: #F2F2F3;
+  --alert: #bc4749;
+  --border_radius: 5px;
+}
+
+body, html{
+  background-color: var(--background);
+}
+
 .home-content .bg{
   overflow: hidden;
   height: 100%;
@@ -11,6 +25,12 @@
   height: auto;
   position: absolute;
   bottom: 0;
+}
+
+#gradient {
+  /* background-image: linear-gradient(90deg, rgba(5,197,241,0.80) 0%, rgba(115,204,48,0.80) 100%), url(../../../Content/imagenes/Imagen 2@2x.png); */
+  /* background-size: cover; */
+  /* background-position: bottom; */
 }
 
 .page-content{
@@ -56,80 +76,10 @@ a.delete-person i.material-icons{
   color: green;
 } */
 
-form{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 1,
   'wght' 400,
   'GRAD' 0,
   'opsz' 24
-}
-
-/* From uiverse.io */
-button {
-  width: 100px;
-  height: 30px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: red;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-  background: #e62222;
-}
-
-button, button span {
-  transition: 200ms;
-}
-
-button .text {
-  transform: translateX(0px);
-  color: white;
-  font-weight: bold;
-}
-
-button .icon {
-  border-left: 1px solid #c41b1b;
-  transform: translateX(0px);
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button .material-icons {
-  width: 15px;
-  fill: #eee;
-  color: #eee;
-}
-
-button:hover {
-  background: #ff3636;
-}
-
-button:hover .text {
-  width: 0px;
-  color: transparent;
-}
-
-button:hover .icon {
-  width: 100px;
-  border-left: none;
-  transform: translateX(0);
-}
-
-button:focus {
-  outline: none;
-}
-
-button:active .icon .material-icons {
-  transform: scale(0.8);
 }
