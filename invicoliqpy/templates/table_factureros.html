@@ -36,6 +36,10 @@
 
 </div>
 
+{% block modal %}
+{% endblock %}
+
+
 {% endblock %}
 
 {% block scripts %}
@@ -54,7 +58,7 @@
                 {data: 'partida'},
                 {data: 'id', orderable: false,  className: 'dt-col-button', 
                 render: function (data, type, full, meta) {
-                            return '<form href=/facturero/editar/'+ parseInt(data) + '>' +
+                            return '<form href=/factureros/editar/'+ parseInt(data) + '>' +
                                 '<button class="btn-small edit-person">' +
                                     '<i class="material-icons">edit</i>'+
                                 '</button>' +
@@ -63,7 +67,7 @@
                 },
                 {data: 'id', orderable: false,  className: 'dt-col-button',
                 render: function (data, type, full, meta) {
-                            return '<form action=/facturero/borrar/'+ parseInt(data) + '>' +
+                            return '<form action=/factureros/borrar/'+ parseInt(data) + '>' +
                                 '<button class="btn-small delete-person">' +
                                     '<i class="material-icons">delete</i>'+
                                 '</button>' +
@@ -80,9 +84,9 @@
             dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'B>>" +
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-		        button: {
-		            className: 'btn'
-                },
+		    button: {
+		        className: 'btn'
+            },
             buttons: [
                 {extend: 'collection',
                 text: '<i class="material-icons">content_copy</i>',
@@ -98,6 +102,9 @@
                 },
                 {text:'<i class="material-icons add-person">person_add</i>',
                 className: 'top btn'
+                // action: function (e, node, config){
+                //     $('#myModal').modal('show')
+                //     }
                 }
             ],
             // language: {

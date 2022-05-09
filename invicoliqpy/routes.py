@@ -22,21 +22,21 @@ def factureros():
 def api_factureros():
     return {'data': [facturero.to_dict() for facturero in Factureros.query]}
 
-""" @app.route('/agregar', methods=['GET','POST'])
+@app.route('/factureros/agregar', methods=['GET','POST'])
 def agregar():
     facturero = Factureros()
     factureroForm = FacturerosForm(obj=facturero)
     if request.method == 'POST':
         if factureroForm.validate_on_submit():
-           factureroForm.populate_obj(facturero)
-           app.logger.debug(f'Persona a insertar: {facturero}')
-           #Insertamos el nuevo registro
-           db.session.add(facturero)
-           db.session.commit()
-           return redirect(url_for('inicio'))
-    return render_template('agregar.html', forma = factureroForm) """
+            factureroForm.populate_obj(facturero)
+            app.logger.debug(f'Persona a insertar: {facturero}')
+            #Insertamos el nuevo registro
+            db.session.add(facturero)
+            db.session.commit()
+            return redirect(url_for('factureros'))
+    return render_template('form_factureros.html', form = factureroForm)
 
-@app.route('/facturero/editar/<int:id>', methods=['GET','POST'])
+@app.route('/factureros/editar/<int:id>', methods=['GET','POST'])
 def facturero_editar(id):
     #Recuperamos el objeto persona a editar
     facturero = Factureros.query.get_or_404(id)
@@ -51,7 +51,7 @@ def facturero_editar(id):
     titulo = 'Editar',
     form = factureroForm)
 
-@app.route('/facturero/borrar/<int:id>')
+@app.route('/factureros/borrar/<int:id>')
 def facturero_borrar(id):
     facturero = Factureros.query.get_or_404(id)
     try:
