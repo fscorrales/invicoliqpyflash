@@ -30,6 +30,8 @@
             <th>nombre_completo</th>
             <th>actividad</th>
             <th>partida</th>
+            <th></th>
+            <th></th>
         </tr>
     </tfoot>
   </table>
@@ -47,7 +49,9 @@
     $(document).ready(function() {
         $('#table-factureros tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        if (title != '') {
+            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        }
     } );
 
         var table = $('#table-factureros').DataTable( {
@@ -58,7 +62,7 @@
                 {data: 'partida'},
                 {data: 'id', orderable: false,  className: 'dt-col-button', 
                 render: function (data, type, full, meta) {
-                            return '<form href=/factureros/editar/'+ parseInt(data) + '>' +
+                            return '<form action=/factureros/editar/'+ parseInt(data) + '>' +
                                 '<button class="btn-small edit-person">' +
                                     '<i class="material-icons">edit</i>'+
                                 '</button>' +
