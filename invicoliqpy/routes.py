@@ -26,15 +26,15 @@ def api_factureros():
 def agregar():
     facturero = Factureros()
     factureroForm = FacturerosForm(obj=facturero)
-    if request.method == 'POST':
-        if factureroForm.validate_on_submit():
-            factureroForm.populate_obj(facturero)
-            app.logger.debug(f'Persona a insertar: {facturero}')
-            #Insertamos el nuevo registro
-            db.session.add(facturero)
-            db.session.commit()
-            return redirect(url_for('factureros'))
-    return render_template('form_factureros.html', form = factureroForm)
+    # if request.method == 'POST':
+    #     if factureroForm.validate_on_submit():
+    #         factureroForm.populate_obj(facturero)
+    #         app.logger.debug(f'Persona a insertar: {facturero}')
+    #         #Insertamos el nuevo registro
+    #         db.session.add(facturero)
+    #         db.session.commit()
+    #         return redirect(url_for('factureros'))
+    return render_template('form_factureros_new.html', form = factureroForm)
 
 @app.route('/factureros/editar/<int:id>', methods=['GET','POST'])
 def facturero_editar(id):
