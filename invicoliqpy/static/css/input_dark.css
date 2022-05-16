@@ -1,0 +1,52 @@
+
+/* body{
+    background-color: black;
+} */
+
+:root{
+    --high_success: #7CBA3D;
+    --success: #91D300;
+    --high_primary: #007bff;
+    --primary: #05C5F1;
+    --background: #F2F2F3;
+    --alert: #bc4749;
+    --border_radius: 10px;
+}
+
+/* From uiverse.io by @alexruix */
+.input-prueba {
+    position: relative;
+    padding: 10px 0;
+}
+
+.input {
+    border: solid 1.5px var(--high_primary);
+    width: 100%;
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    /* color: #f5f5f5; */
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.user-label {
+    position: absolute;
+    left: 15px;
+    color: var(--primary);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.input:focus, input:valid {
+    outline: none;
+    border: 1.5px solid var(--high_success);
+}
+
+.input:focus ~ label, input:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--high_success);
+    padding: 0 .2em;
+    color: white;
+}

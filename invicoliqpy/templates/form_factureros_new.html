@@ -2,13 +2,42 @@
 
 {% block content %}
 
-<div class="container form-factureros">
-  <div class="form-factureros-img">
-    <!-- <img src="{{url_for('static', filename='images/form_factureros_agregar.jpg')}}" alt="form" width="500px"> -->
-  </div>
-  <div class="form-factureros-input">
-
-  </div>
+<div class="container page-content">
+    <div class="container form-factureros">
+        <div class="col form-factureros-left">
+            <img src="{{url_for('static', filename='images/form_factureros_agregar.jpg')}}" alt="form" width="">
+        </div>
+        <div class="col form-factureros-right">
+            <form class="" action="#" method="post">
+                {{form.csrf_token}}
+                <div class="form-factureros-header">
+                    <h2>{{ titulo }} Agente</h2>
+                </div>
+                <div class="form-factureros-input">
+                    <div class="input-prueba">
+                        {{form.nombre_completo(size=30, required="", type="text", autocomplete="off", class="input")}}
+                        <!-- <input required="" type="text" name="text" autocomplete="off" class="input"> -->
+                        <label class="user-label">Nombre Completo</label>
+                    </div>
+                    <div class="input-prueba">
+                        {{form.actividad(size=30, required="", type="text", autocomplete="off", class="input")}}
+                        <!-- <input required="" type="text" name="text" autocomplete="off" class="input"> -->
+                        <label class="user-label">Actividad</label>
+                    </div>
+                    <div class="input-prueba">
+                        {{form.partida(size=30, required="", type="text", autocomplete="off", class="input")}}
+                        <!-- <input required="" type="text" name="text" autocomplete="off" class="input"> -->
+                        <label class="user-label">Partida</label>
+                    </div>
+                </div>
+                <div class="form-factureros-buttons">
+                    
+                    <button type=submit class="up-button positive"> {{ titulo }} </button>
+                    <button class="up-button negative"> Cancelar </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <!-- <div class="container page-content">

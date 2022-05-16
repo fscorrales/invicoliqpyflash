@@ -1,0 +1,45 @@
+:root{
+    --high_success: #7CBA3D;
+    --success: #91D300;
+    --high_primary: #007bff;
+    --primary: #05C5F1;
+    --background: #F2F2F3;
+    --alert: #bc4749;
+    --border_radius: 10px;
+}
+
+/* From uiverse.io */
+button.up-button {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: white;
+    /* background-color: #fff; */
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    margin: 0 20px;
+}
+button.up-button.positive{
+    background-color: var(--primary);
+}
+button.up-button.negative{
+    background-color: var(--alert);
+}
+
+button.up-button:hover {
+    background-color: var(--success);
+    box-shadow: 0px 15px 20px var(--high_success);
+    color: white;
+    transform: translateY(-7px);
+}
+
+button.up-button:active {
+    transform: translateY(-1px);
+}
