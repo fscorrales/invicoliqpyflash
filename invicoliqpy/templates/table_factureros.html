@@ -2,40 +2,28 @@
 
 {% block content %}
 <div class="container page-content">
-
-  <table id="table-factureros" class="table table-hover table-bordered border-success align-middle">
-    <thead class="">
-      <tr>
-        <th>nombre_completo</th>
-        <th>actividad</th>
-        <th>partida</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-        <!-- {% for facturero in factureros %}
-        <tr>
-          <td>{{ facturero.id }}</td>
-          <td>{{ facturero.nombre_completo }}</td>
-          <td>{{ facturero.actividad }}</td>
-          <td>{{ facturero.partida }}</td>
-          <td><a href="{{ url_for('facturero_editar', id = facturero.id) }}">Editar</a></td>
-          <td><a href="{{ url_for('facturero_borrar', id = facturero.id) }}">Eliminar</a></td>
-        </tr>
-        {% endfor %} -->
-    </tbody>
-    <tfoot>
-        <tr>
-            <th>nombre_completo</th>
-            <th>actividad</th>
-            <th>partida</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </tfoot>
-  </table>
-
+    <table id="table-factureros" class="table table-hover align-middle">
+        <thead class="">
+            <tr>
+                <th>nombre_completo</th>
+                <th>actividad</th>
+                <th>partida</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>nombre_completo</th>
+                <th>actividad</th>
+                <th>partida</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
 </div>
 
 {% block modal %}
@@ -45,7 +33,7 @@
 {% endblock %}
 
 {% block scripts %}
-  <script>
+<script>
     $(document).ready(function() {
         $('#table-factureros tfoot th').each( function () {
         var title = $(this).text();
@@ -56,6 +44,10 @@
 
         var table = $('#table-factureros').DataTable( {
             ajax: '/api/factureros',
+            scrollY:        450,
+            deferRender:    true,
+            bScrollCollapse: true,
+            scroller:       true,
             columns: [
                 {data: 'nombre_completo'},
                 {data: 'actividad'},
@@ -94,7 +86,7 @@
             buttons: [
                 {extend: 'collection',
                 text: '<i class="material-icons">content_copy</i>',
-                className: 'top btn',
+                className: 'top copy',
                 buttons:[
                     'copyHtml5',
                     'excelHtml5',
@@ -102,14 +94,18 @@
                     'pdfHtml5'
                 ]},
                 {text:'<i class="material-icons">file_download</i>',
-                className: 'top btn'
+                className: 'top download'
                 },
-                {text:'<i class="material-icons add-person">person_add</i>',
-                className: 'top btn'
-                // action: function (e, node, config){
-                //     $('#myModal').modal('show')
-                //     }
-                }
+                {text: '<form action="/factureros/agregar/">'+
+                            '<span class="caption">Agregar</span>' +
+                            '<span class="icon">' +
+                                '<i class="material-icons add-person">person_add</i>' +
+                            '</span>'+
+                        '</form>',
+                className: 'top add-person label-button',
+                action: function ( e, dt, node, config ) {
+                    window.location.replace("/factureros/agregar");
+                }}
             ],
             // language: {
             //     lengthMenu: "Display _MENU_ records per page",
@@ -134,65 +130,5 @@
         }
         } );
     } );
-    // Código para filtro por columnas
-/*     $(document).ready(function () {
-        // Setup - add a text input to each footer cell
-        $('#table-factureros thead tr')
-            .clone(true)
-            .addClass('filters')
-            .appendTo('#table-factureros thead');
-    
-        var table = $('#table-factureros').DataTable({
-            orderCellsTop: true,
-            fixedHeader: true,
-            initComplete: function () {
-                var api = this.api();
-    
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input type="text" placeholder="' + title + '" />');
-    
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('keyup change', function (e) {
-                                e.stopPropagation();
-    
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-    
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-    
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-        });
-    }); */
-  </script>
+</script>
 {% endblock %}

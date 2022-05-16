@@ -8,8 +8,9 @@
     --border_radius: 10px;
 }
 
+/* UP BUTTON */
 /* From uiverse.io */
-button.up-button {
+.up-button {
     padding: 1.3em 3em;
     font-size: 12px;
     text-transform: uppercase;
@@ -23,23 +24,86 @@ button.up-button {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    width: 100%;
-    margin: 0 20px;
+    text-decoration: none;
 }
-button.up-button.positive{
+.up-button.positive{
     background-color: var(--primary);
 }
-button.up-button.negative{
+.up-button.negative{
     background-color: var(--alert);
 }
 
-button.up-button:hover {
+.up-button:hover {
     background-color: var(--success);
     box-shadow: 0px 15px 20px var(--high_success);
     color: white;
     transform: translateY(-7px);
 }
 
-button.up-button:active {
+.up-button:active {
     transform: translateY(-1px);
+}
+
+/* BUTTON WITH label */
+button.label-button form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* From uiverse.io */
+button.label-button {
+    /* width: 100px; */
+    /* height: 30px; */
+    cursor: pointer;
+    background: var(--primary);
+    /* border: none; */
+    border-radius: var(--border_radius) !important;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+button.label-button, button.label-button span {
+    transition: 200ms;
+}
+
+button.label-button .caption {
+    color: white;
+    font-weight: bold;
+}
+
+button.label-button .icon {
+    width: 30%;
+    border-left: 2px solid white;
+    /* height: 30px;
+    width: 30px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.label-button .material-icons {
+    /* width: 15px; */
+    fill: #eee;
+}
+
+button.label-button:hover {
+    background: var(--success) !important;
+}
+
+button.label-button:hover .caption {
+    width: 0px;
+    color: transparent;
+}
+
+button.label-button:hover .icon {
+    width: 100%;
+    border-left: none;
+    justify-content: center;
+}
+
+button.label-button:focus {
+    outline: none;
+}
+
+button.label-button:active .material-icons {
+    transform: scale(0.8);
 }

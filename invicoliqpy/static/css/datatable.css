@@ -19,6 +19,33 @@ table thead th{
     text-align: center;
 }
 
+/* Botones superiores */
+div.dt-buttons{
+    float: right;
+    width: 100%;
+    justify-content: space-around;
+}
+
+div.dt-buttons .btn.top { 
+    background-color: var(--primary);
+}
+
+div.dt-buttons .btn-group{
+    width: 30%;
+    margin: 0 15px;
+}
+
+div.dt-buttons .btn.top.download{
+    width: 20%;
+    margin: 0 15px;
+}
+
+div.dt-buttons .btn.top.add-person{
+    width: 20%;
+    margin: 0 15px;
+}
+
+/* Botones de columnas */
 /* From uiverse.io by @CristianMontoya98 */
 td.dt-col-button button.btn-small {
     padding: 5px 5px;
@@ -72,12 +99,11 @@ i.material-icons{
     vertical-align: center;
 }
 
-div.dt-buttons{
-    float: right;
+/* Table pagination style */
+.page-link {
+    color: var(--high_primary);
 }
-
-div.dt-buttons .btn.top { 
-    width: 60px;
-    margin-right: 0px;
+.page-item.active .page-link{
     background-color: var(--primary);
+    border-color: var(--high_primary);
 }

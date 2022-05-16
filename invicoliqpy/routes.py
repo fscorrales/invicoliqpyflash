@@ -34,7 +34,7 @@ def agregar():
             db.session.add(facturero)
             db.session.commit()
             return redirect(url_for('factureros'))
-    return render_template('form_factureros_new.html',
+    return render_template('form_factureros.html',
     titulo = 'Agregar',
     form = factureroForm)
 
@@ -49,7 +49,7 @@ def facturero_editar(id):
             app.logger.debug(f'Facturero a actualizar: {facturero}')
             db.session.commit()
             return redirect(url_for('factureros'))
-    return render_template('form_factureros_new.html', 
+    return render_template('form_factureros.html', 
     titulo = 'Editar',
     form = factureroForm)
 
