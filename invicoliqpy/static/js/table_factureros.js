@@ -1,3 +1,4 @@
+// DataTable init
 $(document).ready(function() {
     $('#table-factureros tfoot th').each( function () {
     var title = $(this).text();
@@ -13,6 +14,7 @@ $(document).ready(function() {
         bScrollCollapse: true,
         scroller:       true,
         columns: [
+            {data: 'id', orderable: false},
             {data: 'nombre_completo'},
             {data: 'actividad'},
             {data: 'partida'},
@@ -27,11 +29,9 @@ $(document).ready(function() {
             },
             {data: 'id', orderable: false,  className: 'dt-col-button',
             render: function (data, type, full, meta) {
-                        return '<form action=/factureros/borrar/'+ parseInt(data) + '>' +
-                            '<button class="btn-small delete-person">' +
+                        return'<button class="btn-small delete-person">' +
                                 '<i class="material-icons">delete</i>'+
-                            '</button>' +
-                        '</form>';
+                            '</button>'
                         }
             },
         ],
@@ -93,4 +93,54 @@ $(document).ready(function() {
         } );
     }
     } );
-} );
+// } );
+// END DataTable init
+
+//Borrar
+$(document).on("click", ".delete-person", function(){
+    fila = $(this);           
+    id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;	
+    // $("#formUsuarios").trigger("reset");
+    // $(".modal-header").css( "background-color", "#17a2b8");
+    // $(".modal-header").css( "color", "white" );
+    $(".modal-title").text("Borrar Facturero");
+    $(".modal-message").text("¿Desea borrar el facturero con id: " + id + "?");
+    $('#borrar-facturero').modal('show');		     
+    // var respuesta = confirm("¿Está seguro de borrar el registro "+id+"?");                
+    // if (respuesta) {      
+    // '<form action=/factureros/borrar/'+ parseInt(data) + '>' +      
+    //     $.ajax({
+    //         url: "bd/crud.php",
+    //         type: "POST",
+    //         datatype:"json",    
+    //         data:  {opcion:opcion, user_id:user_id},    
+    //         success: function() {
+    //             tablaUsuarios.row(fila.parents('tr')).remove().draw();                  
+    //         }
+    //     });	
+    // }
+});
+
+// var fila; //captura la fila, para editar o eliminar
+// //submit para el Alta y Actualización
+// $('#formUsuarios').submit(function(e){                         
+//     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+//     username = $.trim($('#username').val());    
+//     first_name = $.trim($('#first_name').val());
+//     last_name = $.trim($('#last_name').val());    
+//     gender = $.trim($('#gender').val());    
+//     password = $.trim($('#password').val());
+//     status = $.trim($('#status').val());                            
+//         $.ajax({
+//           url: "bd/crud.php",
+//           type: "POST",
+//           datatype:"json",    
+//           data:  {user_id:user_id, username:username, first_name:first_name, last_name:last_name, gender:gender, password:password ,status:status ,opcion:opcion},    
+//           success: function(data) {
+//             tablaUsuarios.ajax.reload(null, false);
+//            }
+//         });			        
+//     $('#modalCRUD').modal('hide');											     			
+// });
+
+});    
