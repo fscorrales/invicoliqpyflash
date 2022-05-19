@@ -43,7 +43,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" id="submit-delete-person" class="btn btn-danger">Borrar</button>
         </div>
       </div>
     </div>
@@ -55,7 +55,9 @@
 {% endblock %}
 
 {% block scripts %}
-
+<script>
+    $URL_FACTUREROS_BORRAR = "{{url_for('facturero_borrar', id=0)}}";
+</script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/table_factureros.js') }}"></script>
 
 {% endblock %}

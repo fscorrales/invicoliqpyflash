@@ -96,6 +96,7 @@ $(document).ready(function() {
 // } );
 // END DataTable init
 
+var fila; //captura la fila, para editar o eliminar
 //Borrar
 $(document).on("click", ".delete-person", function(){
     fila = $(this);           
@@ -119,6 +120,11 @@ $(document).on("click", ".delete-person", function(){
     //         }
     //     });	
     // }
+});
+//submit para el Alta y Actualización
+$(document).on("click", "#submit-delete-person", function(){       
+    $('#borrar-facturero').modal('hide');
+    window.location.replace($URL_FACTUREROS_BORRAR.replace(0, id));
 });
 
 // var fila; //captura la fila, para editar o eliminar

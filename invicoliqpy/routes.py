@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, flash
 from werkzeug.utils import redirect
 from invicoliqpy import app, db
 from invicoliqpy.models import Factureros
@@ -61,9 +61,8 @@ def facturero_borrar(id):
         db.session.commit()
         #Return messagge:
         #flash("delete facturero")
+        return redirect(url_for('factureros'))
     except:
-        #flash("problema al borrar un facturero")
+        flash("problema al borrar un facturero")
         app.logger.debug(f'Facturero: {facturero} no se pudo borrar')
-    finally:
-        factureros = Factureros.query
-        return render_template('table_factureros.html', factureros = factureros)
+        return redirect(url_for('factureros'))
