@@ -14,13 +14,12 @@ $(document).ready(function() {
         bScrollCollapse: true,
         scroller:       true,
         columns: [
-            {data: 'id', orderable: false},
             {data: 'nombre_completo'},
             {data: 'actividad'},
             {data: 'partida'},
             {data: 'id', orderable: false,  className: 'dt-col-button', 
             render: function (data, type, full, meta) {
-                        return '<form action=/factureros/editar/'+ parseInt(data) + '>' +
+                        return '<form action='+ $URL_FACTUREROS_EDITAR.replace(0, parseInt(data)) + '>' +
                             '<button class="btn-small edit-person">' +
                                 '<i class="material-icons">edit</i>'+
                             '</button>' +
@@ -29,7 +28,7 @@ $(document).ready(function() {
             },
             {data: 'id', orderable: false,  className: 'dt-col-button',
             render: function (data, type, full, meta) {
-                        return'<button class="btn-small delete-person">' +
+                        return'<button class="btn-small delete-person" id='+ parseInt(data) +'>' +
                                 '<i class="material-icons">delete</i>'+
                             '</button>'
                         }
@@ -68,7 +67,8 @@ $(document).ready(function() {
                     '</form>',
             className: 'top add-person label-button',
             action: function ( e, dt, node, config ) {
-                window.location.replace("/factureros/agregar");
+                // $('#modal-agregar-facturero').modal('show');
+                window.location.replace($URL_FACTUREROS_AGREGAR);
             }}
         ],
         // language: {
@@ -97,16 +97,19 @@ $(document).ready(function() {
 // END DataTable init
 
 var fila; //captura la fila, para editar o eliminar
+var id;
+
 //Borrar
 $(document).on("click", ".delete-person", function(){
+    id = this.id;
     fila = $(this);           
-    id = parseInt($(this).closest('tr').find('td:eq(0)').text()) ;	
+    var nombre = ($(this).closest('tr').find('td:eq(0)').text()) ;	
     // $("#formUsuarios").trigger("reset");
     // $(".modal-header").css( "background-color", "#17a2b8");
     // $(".modal-header").css( "color", "white" );
     $(".modal-title").text("Borrar Facturero");
-    $(".modal-message").text("¿Desea borrar el facturero con id: " + id + "?");
-    $('#borrar-facturero').modal('show');		     
+    $(".modal-message").text("¿Desea borrar al facturero: " + nombre + "?");
+    $('#modal-borrar-facturero').modal('show');		     
     // var respuesta = confirm("¿Está seguro de borrar el registro "+id+"?");                
     // if (respuesta) {      
     // '<form action=/factureros/borrar/'+ parseInt(data) + '>' +      
@@ -126,6 +129,8 @@ $(document).on("click", "#submit-delete-person", function(){
     $('#borrar-facturero').modal('hide');
     window.location.replace($URL_FACTUREROS_BORRAR.replace(0, id));
 });
+
+
 
 // var fila; //captura la fila, para editar o eliminar
 // //submit para el Alta y Actualización

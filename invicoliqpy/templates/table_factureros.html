@@ -5,7 +5,6 @@
     <table id="table-factureros" class="table table-hover align-middle">
         <thead class="">
             <tr>
-                <th>id</th>
                 <th>nombre_completo</th>
                 <th>actividad</th>
                 <th>partida</th>
@@ -17,7 +16,6 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>id</th>
                 <th>nombre_completo</th>
                 <th>actividad</th>
                 <th>partida</th>
@@ -30,8 +28,10 @@
 
 {% block modal %}
 
-<!-- Modal -->
-<div class="modal fade" id="borrar-facturero" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- ES POSIBLE UTILIZAR UN MODAL CON WTF PERO NO ME GUSTA COMO SE RENDERIZA -->
+
+<!-- Modal Borrar -->
+<div class="modal fade" id="modal-borrar-facturero" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,8 +42,8 @@
           <p class="modal-message">Prueba</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" id="submit-delete-person" class="btn btn-danger">Borrar</button>
+          <button type="button" class="btn up-button positive" data-bs-dismiss="modal">Close</button>
+          <button type="submit" id="submit-delete-person" class="btn up-button negative">Borrar</button>
         </div>
       </div>
     </div>
@@ -56,8 +56,11 @@
 
 {% block scripts %}
 <script>
+    $URL_FACTUREROS_AGREGAR = "{{url_for('facturero_agregar')}}";
+    $URL_FACTUREROS_EDITAR = "{{url_for('facturero_editar', id=0)}}";
     $URL_FACTUREROS_BORRAR = "{{url_for('facturero_borrar', id=0)}}";
 </script>
+
 <script type="text/javascript" src="{{ url_for('static', filename='js/table_factureros.js') }}"></script>
 
 {% endblock %}

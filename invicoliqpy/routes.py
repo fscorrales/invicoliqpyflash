@@ -23,7 +23,7 @@ def api_factureros():
     return {'data': [facturero.to_dict() for facturero in Factureros.query]}
 
 @app.route('/factureros/agregar', methods=['GET','POST'])
-def agregar():
+def facturero_agregar():
     facturero = Factureros()
     factureroForm = FacturerosForm(obj=facturero)
     if request.method == 'POST':
