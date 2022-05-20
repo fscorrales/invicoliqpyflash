@@ -21,6 +21,13 @@ Si al momento de inciar el proceso aparece el error “Could not locate a Flask 
  # Introducir registros
 Para generar registros falsos en la base de datos se puede utilizar el módulo fake_db que forma parte de este paquete. Para ello deberá importar el paquete completo en una consola python y llamar a las funciones que forman parte del mencionado módulo identificando la cantidad de registros a agregar.
 
+ # Eliminar Registros
+Para eliminar todos los registros de una tabla deberá utilizar el método *query.delete()* del modelo que hace referencia a la tabla deseada. Por ejemplo, si desea eliminar todos los registros de la tabla honorarios_factureros, deberá:
+ * import invicoliqpy
+ * from invicoliqpy import db
+ * invicoliqpy.models.HonorariosFactureros.query.delete()
+ * db.session.commit()
+
  # Ejecutar flask en modo debug
  Simplemente hay que introducir el comando *python run.py* estando posicionados dentro de la raíz del paquete invicoliqpy
  
