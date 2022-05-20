@@ -9,6 +9,8 @@ from datetime import datetime
 faker = Faker('es_ES')
 actividad = ['01-00-01', '01-00-02', '01-00-03', 
 '01-00-04', '11-00-01', '12-00-01']
+nro_comprobante = ['01000/22', "02000/22", "03000/22",
+'04000/22', '99999/22']
 
 def fake_factureros(n):
     """Generate fake users."""
@@ -28,6 +30,7 @@ def fake_honorarios_factureros(n):
         honorario = HonorariosFactureros(
                     fecha = datetime.utcnow(),
                     facturero=faker.name(),
+                    nro_comprobante=random.choice(nro_comprobante),
                     importe_bruto=random.randint(10000, 100000),
                     actividad=random.choice(actividad),
                     partida=random.randint(300, 399)
