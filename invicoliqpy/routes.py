@@ -1,7 +1,7 @@
 from flask import render_template, request, url_for, flash
 from werkzeug.utils import redirect
 from invicoliqpy import app, db
-from invicoliqpy.models import Factureros
+from invicoliqpy.models import Factureros, HonorariosFactureros
 from invicoliqpy.forms import FacturerosForm
 
 #http://localhost:5000/
@@ -66,3 +66,12 @@ def facturero_borrar(id):
         flash("problema al borrar un facturero")
         app.logger.debug(f'Facturero: {facturero} no se pudo borrar')
         return redirect(url_for('factureros'))
+
+@app.route('/siif-factureros')
+def siif_factureros():
+    pass
+    # return render_template('table_factureros.html')
+
+@app.route('/api/siif-factureros')
+def api_siif_factureros():
+    return {'data': [honorario.to_dict() for honorario in HonorariosFactureros.query]}
