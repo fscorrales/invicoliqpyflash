@@ -69,8 +69,7 @@ def facturero_borrar(id):
 
 @app.route('/siif-factureros')
 def siif_factureros():
-    pass
-    # return render_template('table_factureros.html')
+    return render_template('table_siif_factureros.html')
 
 @app.route('/api/siif-factureros')
 def api_siif_factureros():

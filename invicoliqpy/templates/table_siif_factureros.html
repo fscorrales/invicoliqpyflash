@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container page-content">
+    <table id="table-siif-factureros" class="table table-hover align-middle">
+        <thead class="">
+            <tr>
+                <th>nro_comprobante</th>
+                <th>fecha</th>
+                <th>facturero</th>
+                <th>tipo</th>
+                <th>actividad</th>
+                <th>partida</th>
+                <th>importe_bruto</th>
+                <th>iibb</th>
+                <th>libramiento_pago</th>
+                <th>sellos</th>
+                <th>seguro</th>
+                <th>otras_retenciones</th>
+                <th>anticipo</th>
+                <th>descuento</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>nro_comprobante</th>
+                <th>fecha</th>
+                <th>facturero</th>
+                <th>tipo</th>
+                <th>actividad</th>
+                <th>partida</th>
+                <th>importe_bruto</th>
+                <th>iibb</th>
+                <th>libramiento_pago</th>
+                <th>sellos</th>
+                <th>seguro</th>
+                <th>otras_retenciones</th>
+                <th>anticipo</th>
+                <th>descuento</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% block modal %}
+
+<!-- ES POSIBLE UTILIZAR UN MODAL CON WTF PERO NO ME GUSTA COMO SE RENDERIZA -->
+
+<!-- Modal Borrar -->
+<div class="modal fade" id="modal-borrar-facturero" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-message">Prueba</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn up-button positive" data-bs-dismiss="modal">Close</button>
+          <button type="submit" id="submit-delete-person" class="btn up-button negative">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // $URL_FACTUREROS_AGREGAR = "{{url_for('facturero_agregar')}}";
+    // $URL_FACTUREROS_EDITAR = "{{url_for('facturero_editar', id=0)}}";
+    // $URL_FACTUREROS_BORRAR = "{{url_for('facturero_borrar', id=0)}}";
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/table_siif_factureros.js') }}"></script>
+
+{% endblock %}
