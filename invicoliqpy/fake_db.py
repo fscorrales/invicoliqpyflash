@@ -3,7 +3,7 @@ from invicoliqpy.models import Factureros, HonorariosFactureros
 import random
 import sys
 from faker import Faker
-from datetime import datetime
+from datetime import date
 
 
 faker = Faker('es_ES')
@@ -28,7 +28,7 @@ def fake_honorarios_factureros(n):
     """Generate fake Honorarios Factureros."""
     for i in range(n):
         honorario = HonorariosFactureros(
-                    fecha = datetime.utcnow(),
+                    fecha = date.today(),
                     facturero=faker.name(),
                     nro_comprobante=random.choice(nro_comprobante),
                     importe_bruto=random.randint(10000, 100000),
