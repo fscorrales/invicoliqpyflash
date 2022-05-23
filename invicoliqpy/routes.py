@@ -4,6 +4,13 @@ from invicoliqpy import app, db
 from invicoliqpy.models import Factureros, HonorariosFactureros
 from invicoliqpy.forms import FacturerosForm
 
+def get_list_of_dict(keys, list_of_tuples):
+    """
+    This function will accept keys and list_of_tuples as args and return list of dicts
+    """
+    list_of_dict = [dict(zip(keys, values)) for values in list_of_tuples]
+    return list_of_dict
+
 #http://localhost:5000/
 @app.route('/')
 def inicio():
@@ -71,6 +78,29 @@ def facturero_borrar(id):
 def siif_factureros():
     return render_template('table_siif_factureros.html')
 
+@app.route('/api/honorarios-factureros')
+def api_honorarios_factureros():
+    return {'data': [honorario.to_dict() for honorario in HonorariosFactureros.query]}
+
 @app.route('/api/siif-factureros')
 def api_siif_factureros():
-    return {'data': [honorario.to_dict() for honorario in HonorariosFactureros.query]}
+    comprobantes_siif = db.session.query(HonorariosFactureros.nro_comprobante, 
+    HonorariosFactureros.fecha, db.func.sum(HonorariosFactureros.importe_bruto), 
+    db.func.count(HonorariosFactureros.nro_comprobante)).group_by(HonorariosFactureros.nro_comprobante).all()
+    keys = ('nro_comprobante', 'fecha', 'importe_bruto', 'cantidad')
+    return {'data':get_list_of_dict(keys, comprobantes_siif)}
+
+@app.route('/siif-factureros/borrar/<nro_comprobante>')
+def siif_factureros_borrar(nro_comprobante):
+    nro_comprobante = nro_comprobante.replace('-','/')
+    siif = HonorariosFactureros.query.filter_by(nro_comprobante=nro_comprobante)
+    try:
+        siif.delete()
+        db.session.commit()
+        #Return messagge:
+        #flash("delete facturero")
+        return redirect(url_for('siif_factureros'))
+    except:
+        flash("problema al borrar un facturero")
+        app.logger.debug(f'Nro comprobante: {nro_comprobante} SIIF no se pudo borrar')
+        return redirect(url_for('siif_factureros'))

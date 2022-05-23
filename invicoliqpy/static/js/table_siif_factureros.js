@@ -10,40 +10,38 @@ $(document).ready(function() {
     var table = $('#table-siif-factureros').DataTable( {
         ajax: '/api/siif-factureros',
         scrollY:        450,
+        scrollX: false,
         deferRender:    true,
         bScrollCollapse: true,
         scroller:       true,
         columns: [
             {data: 'nro_comprobante'},
             {data: 'fecha'},
-            {data: 'facturero'},
-            {data: 'tipo'},
-            {data: 'actividad'},
-            {data: 'partida'},
             {data: 'importe_bruto'},
-            {data: 'iibb'},
-            {data: 'libramiento_pago'},
-            {data: 'sellos'},
-            {data: 'seguro'},
-            {data: 'otras_retenciones'},
-            {data: 'anticipo'},
-            {data: 'descuento'}
-            // {data: 'id', orderable: false,  className: 'dt-col-button', 
-            // render: function (data, type, full, meta) {
-            //             return '<form action='+ $URL_FACTUREROS_EDITAR.replace(0, parseInt(data)) + '>' +
-            //                 '<button class="btn-small edit-person">' +
-            //                     '<i class="material-icons">edit</i>'+
-            //                 '</button>' +
-            //             '</form>';
-            //             }
-            // },
-            // {data: 'id', orderable: false,  className: 'dt-col-button',
-            // render: function (data, type, full, meta) {
-            //             return'<button class="btn-small delete-person" id='+ parseInt(data) +'>' +
-            //                     '<i class="material-icons">delete</i>'+
-            //                 '</button>'
-            //             }
-            // },
+            {data: 'cantidad'},
+            // {data: 'iibb'},
+            // {data: 'libramiento_pago'},
+            // {data: 'sellos'},
+            // {data: 'seguro'},
+            // {data: 'otras_retenciones'},
+            // {data: 'anticipo'},
+            // {data: 'descuento'}
+            {data: 'nro_comprobante', orderable: false,  className: 'dt-col-button', 
+            render: function (data, type, full, meta) {
+                        return '<form action='+ $URL_FACTUREROS_EDITAR.replace(0, parseInt(data)) + '>' +
+                            '<button class="btn-small edit siif">' +
+                                '<i class="material-icons">edit</i>'+
+                            '</button>' +
+                        '</form>';
+                        }
+            },
+            {data: 'nro_comprobante', orderable: false,  className: 'dt-col-button',
+            render: function (data, type, full, meta) {
+                        return'<button class="btn-small delete siif" id='+ (data) +'>' +
+                                '<i class="material-icons">delete</i>'+
+                            '</button>'
+                        }
+            },
         ],
         // columnDef: [
         //     {
@@ -108,19 +106,19 @@ $(document).ready(function() {
 // END DataTable init
 
 var fila; //captura la fila, para editar o eliminar
-var id;
+var nro_comprobante;
 
 //Borrar
-$(document).on("click", ".delete-person", function(){
-    id = this.id;
-    fila = $(this);           
-    var nombre = ($(this).closest('tr').find('td:eq(0)').text()) ;	
+$(document).on("click", ".delete.siif", function(){
+    nro_comprobante = this.id;
+    // fila = $(this);           
+    // var nombre = ($(this).closest('tr').find('td:eq(0)').text()) ;	
     // $("#formUsuarios").trigger("reset");
     // $(".modal-header").css( "background-color", "#17a2b8");
     // $(".modal-header").css( "color", "white" );
-    $(".modal-title").text("Borrar Facturero");
-    $(".modal-message").text("¿Desea borrar al facturero: " + nombre + "?");
-    $('#modal-borrar-facturero').modal('show');		     
+    $(".modal-title").text("Borrar Comprobante SIIF");
+    $(".modal-message").text("¿Desea borrar el Nro Comprobante SIIF: " + nro_comprobante + "?");
+    $('#modal-borrar-siif-factureros').modal('show');		     
     // var respuesta = confirm("¿Está seguro de borrar el registro "+id+"?");                
     // if (respuesta) {      
     // '<form action=/factureros/borrar/'+ parseInt(data) + '>' +      
@@ -136,9 +134,10 @@ $(document).on("click", ".delete-person", function(){
     // }
 });
 //submit para el Alta y Actualización
-$(document).on("click", "#submit-delete-person", function(){       
-    $('#borrar-facturero').modal('hide');
-    window.location.replace($URL_FACTUREROS_BORRAR.replace(0, id));
+$(document).on("click", "#submit-delete-siif", function(){       
+    $('#borrar-siif-factureros').modal('hide');
+    nro_comprobante = nro_comprobante.replace('/','-')
+    window.location.replace($URL_SIIF_FACTUREROS_BORRAR.replace('0', nro_comprobante));
 });
 
 
