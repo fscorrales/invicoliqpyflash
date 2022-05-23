@@ -90,6 +90,20 @@ def api_siif_factureros():
     keys = ('nro_comprobante', 'fecha', 'importe_bruto', 'cantidad')
     return {'data':get_list_of_dict(keys, comprobantes_siif)}
 
+@app.route('/siif-factureros/agregar')
+def siif_facturero_agregar():
+    # facturero = Factureros()
+    # factureroForm = FacturerosForm(obj=facturero)
+    # if request.method == 'POST':
+    #     if factureroForm.validate_on_submit():
+    #         factureroForm.populate_obj(facturero)
+    #         app.logger.debug(f'Persona a insertar: {facturero}')
+    #         #Insertamos el nuevo registro
+    #         db.session.add(facturero)
+    #         db.session.commit()
+    #         return redirect(url_for('factureros'))
+    return render_template('wizard_download_honorarios.html')
+
 @app.route('/siif-factureros/borrar/<nro_comprobante>')
 def siif_factureros_borrar(nro_comprobante):
     nro_comprobante = nro_comprobante.replace('-','/')

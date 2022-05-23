@@ -68,17 +68,17 @@ $(document).ready(function() {
             {text:'<i class="material-icons">file_download</i>',
             className: 'top download'
             },
-            // {text: '<form action="/factureros/agregar/">'+
-            //             '<span class="caption">Agregar</span>' +
-            //             '<span class="icon">' +
-            //                 '<i class="material-icons add-person">person_add</i>' +
-            //             '</span>'+
-            //         '</form>',
-            // className: 'top add-person label-button',
-            // action: function ( e, dt, node, config ) {
-            //     // $('#modal-agregar-facturero').modal('show');
-            //     window.location.replace($URL_FACTUREROS_AGREGAR);
-            // }}
+            {text: '<form>'+
+                        '<span class="caption">Agregar</span>' +
+                        '<span class="icon">' +
+                            '<i class="material-icons add siif">person_add</i>' +
+                        '</span>'+
+                    '</form>',
+            className: 'top add-person label-button',
+            action: function ( e, dt, node, config ) {
+                // $('#modal-agregar-facturero').modal('show');
+                window.location.replace($URL_SIIF_FACTUREROS_AGREGAR);
+            }}
         ],
         // language: {
         //     lengthMenu: "Display _MENU_ records per page",
