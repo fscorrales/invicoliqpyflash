@@ -64,11 +64,11 @@ td.dt-col-button button.btn-small {
     overflow: hidden;
 }
 
-td.dt-col-button button.btn-small.delete-person{
+td.dt-col-button button.btn-small.delete{
     background: var(--alert);
 }
 
-td.dt-col-button button.btn-small.edit-person{
+td.dt-col-button button.btn-small.edit{
     background: var(--primary);
 }
 

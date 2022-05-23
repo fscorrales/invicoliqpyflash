@@ -20,7 +20,7 @@ $(document).ready(function() {
             {data: 'id', orderable: false,  className: 'dt-col-button', 
             render: function (data, type, full, meta) {
                         return '<form action='+ $URL_FACTUREROS_EDITAR.replace(0, parseInt(data)) + '>' +
-                            '<button class="btn-small edit-person">' +
+                            '<button class="btn-small edit person">' +
                                 '<i class="material-icons">edit</i>'+
                             '</button>' +
                         '</form>';
@@ -28,7 +28,7 @@ $(document).ready(function() {
             },
             {data: 'id', orderable: false,  className: 'dt-col-button',
             render: function (data, type, full, meta) {
-                        return'<button class="btn-small delete-person" id='+ parseInt(data) +'>' +
+                        return'<button class="btn-small delete person" id='+ parseInt(data) +'>' +
                                 '<i class="material-icons">delete</i>'+
                             '</button>'
                         }
@@ -100,7 +100,7 @@ var fila; //captura la fila, para editar o eliminar
 var id;
 
 //Borrar
-$(document).on("click", ".delete-person", function(){
+$(document).on("click", ".delete.person", function(){
     id = this.id;
     fila = $(this);           
     var nombre = ($(this).closest('tr').find('td:eq(0)').text()) ;	
