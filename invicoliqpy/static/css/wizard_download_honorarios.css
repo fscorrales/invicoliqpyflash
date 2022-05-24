@@ -1,11 +1,12 @@
-/* * {
-    margin: 0;
-    padding: 0;
+:root{
+    --high_success: #7CBA3D;
+    --success: #91D300;
+    --high_primary: #007bff;
+    --primary: #05C5F1;
+    --background: #F2F2F3;
+    --alert: #bc4749;
+    --border_radius: 10px;
 }
-
-html {
-    height: 100%;
-} */
 
 /*Background color*/
 #grad1{
@@ -166,24 +167,45 @@ select.list-dt:focus {
 }
 
 /*Icons in the ProgressBar*/
-#progressbar #account:before {
+/* #progressbar #account:before {
     font-family: FontAwesome;
     content: "\f023";
+} */
+
+#progressbar #account:before {
+    font-family: 'Material Icons';
+    content: "upload_file";
+    font-size: xx-large;
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
 }
 
 #progressbar #personal:before {
-    font-family: FontAwesome;
-    content: "\f007";
+    font-family: 'Material Icons';
+    content: "person_add";
+    font-size: xx-large;
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
 }
 
 #progressbar #payment:before {
-    font-family: FontAwesome;
-    content: "\f09d";
+    font-family: 'Material Icons';
+    content: "badge";
+    font-size: xx-large;
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
 }
 
 #progressbar #confirm:before {
-    font-family: FontAwesome;
-    content: "\f00c";
+    font-family: 'Material Icons';
+    content: "space_dashboard";
+    font-size: xx-large;
+    -webkit-font-feature-settings: 'liga' 1;
+    -moz-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga' 1;
 }
 
 /*ProgressBar before any progress*/
@@ -214,7 +236,7 @@ select.list-dt:focus {
 
 /*Color number of the step and the connector before it*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: skyblue;
+    background: var(--high_success);
 }
 
 /*Imaged Radio Buttons*/
